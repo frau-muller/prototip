@@ -19,10 +19,19 @@ from django.contrib import admin
 from django.urls import path, include
 
 
+#urlpatterns = [
+   # path('admin/', admin.site.urls),
+   # path('', include('news.urls')),
+    #path('game/', include('game.urls')),
+#]
+#if settings.DEBUG:
+    #urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('news.urls')),
-    path('game/', include('game.urls')),
+    path('', views.welcome, name='home'),
+    path('register', views.register, name='register'),
+    path('login', views.login, name='login'),
+    path('logout', views.logout, name='logout'),
+
+    path('admin/', admin.site.urls, name='admin'),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA__ROOT)
