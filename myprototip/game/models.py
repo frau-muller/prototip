@@ -1,4 +1,8 @@
 from django.db import models
+from django.db import models
+from django.contrib.auth.models import User
+from django.db.models import Manager
+
 
 class Question(models.Model):
 
@@ -15,12 +19,6 @@ class Question(models.Model):
     option_d = models.CharField(max_length=250, verbose_name="Выбор D")
     correct_answer = models.CharField(max_length=5, choices=CHOICES_ANSWER, verbose_name="Правильный ответ")
 
-<<<<<<< HEAD
-class Score(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name="Пользователь")
-    time = models.TimeField(verbose_name="Время", auto_now=False, auto_now_add=False)
-    score = models.IntegerField(verbose_name="Очки")
-=======
     class Meta:
         ordering = ['id']
         verbose_name = 'Вопрос'
@@ -32,12 +30,11 @@ class Score(models.Model):
 
 class Score(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name="Пользователь")
-    time = models.TimeField(verbose_name="Tiempo", auto_now=False, auto_now_add=False)
+    time = models.TimeField(verbose_name="Время", auto_now=False, auto_now_add=False)
     score = models.IntegerField(verbose_name="Очки")
 
     #call_friend = models.BooleanField(verbose_name="LLamar a un amigo", default=False)
     #audience = models.BooleanField(verbose_name="Consultar a la audiencia", default=False)
->>>>>>> 22d7e7f49e574469d4e4054dc9cca4699547682e
     fifty_fifty = models.BooleanField(verbose_name="50-50", default=False)
     created = models.DateTimeField(auto_now_add=True, verbose_name="День создания")
 
