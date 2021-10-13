@@ -21,3 +21,29 @@ class Score(models.Model):
     score = models.IntegerField(verbose_name="Очки")
     fifty_fifty = models.BooleanField(verbose_name="50-50", default=False)
     created = models.DateTimeField(auto_now_add=True, verbose_name="День создания")
+
+
+    def username(self):
+        return self.user.username
+
+    username.short_description = 'Пользователь'
+
+    class Meta:
+        ordering = ['score']
+        verbose_name = 'Балл'
+        verbose_name_plural = 'Баллы'
+
+    def __str__(self):
+        return str(self.score)
+
+
+class Prize(models.Model):
+    amount = models.IntegerField(verbose_name="Сумма", null=False, blank=False)
+
+    class Meta:
+        ordering = ['id']
+        verbose_name = 'Приз'
+        verbose_name_plural = 'Призы'
+
+    def __str__(self):
+        return str(self.amount)
