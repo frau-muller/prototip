@@ -1,4 +1,12 @@
-from django.urls import path
 
+from django.urls import path
 from .views import *
-LOGOUT_REDIRECT_URL = '/login'
+
+
+urlpatterns = [
+    path('',welcome),
+    path('',login),
+    path('' ,register),
+    path('',logout),
+
+]
